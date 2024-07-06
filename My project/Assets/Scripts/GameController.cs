@@ -6,6 +6,10 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public GameObject beefPrefab;
+    public GameObject burgerPrefab;
+    public GameObject colaPrefab;
+    public GameObject fricePrefab;
+
     public float timeLeft;
     public Text timerText;
     public Canvas canvas;
@@ -14,6 +18,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+
         canvasRect = canvas.GetComponent<RectTransform>();
         beefWidth = beefPrefab.GetComponent<RectTransform>().rect.width;
 
@@ -32,15 +37,19 @@ public class GameController : MonoBehaviour
 
     IEnumerator Spawn()
     {
-        yield return new WaitForSeconds(2.0f);
+
+        // Создание массива объектов
+        GameObject[] objects = new GameObject[]{burgerPrefab,beefPrefab, colaPrefab, fricePrefab };
+
         while (timeLeft>0)
         {
             Vector2 spawnPosition = new Vector2(
                 Random.Range(-canvasRect.rect.width / 2 + beefWidth / 2, canvasRect.rect.width / 2 - beefWidth / 2),
-                Random.Range(-canvasRect.rect.height, canvasRect.rect.height));
-            GameObject newBeef = Instantiate(beefPrefab, canvas.transform);
+                canvasRect.rect.height/2 - beefWidth*2);
+            GameObject newBeef = Instantiate(objects[Random.Range(0, objects.Length)], canvas.transform);
+            newBeef.transform.SetSiblingIndex(1);
             newBeef.GetComponent<RectTransform>().anchoredPosition = spawnPosition;
-            yield return new WaitForSeconds(Random.Range(1.0f, 2.0f));
+            yield return new WaitForSeconds(Random.Range(0.6f, 1.4f));
         }
     }
     void UpdateText()
