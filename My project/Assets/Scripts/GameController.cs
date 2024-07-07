@@ -23,7 +23,8 @@ public class GameController : MonoBehaviour
         canvasRect = canvas.GetComponent<RectTransform>();
         beefWidth = beefPrefab.GetComponent<RectTransform>().rect.width;
 
-        StartCoroutine(Spawn());
+        StartCoroutine(Spawn1());
+        StartCoroutine(Spawn2());
         UpdateText();
     }
     void FixedUpdate()
@@ -38,7 +39,7 @@ public class GameController : MonoBehaviour
 
     }
 
-    IEnumerator Spawn()
+    IEnumerator Spawn1()
     {
 
         // Создание массива объектов
@@ -48,11 +49,28 @@ public class GameController : MonoBehaviour
         {
             Vector2 spawnPosition = new Vector2(
                 Random.Range(-canvasRect.rect.width / 2 + beefWidth / 2, canvasRect.rect.width / 2 - beefWidth / 2),
-                canvasRect.rect.height/2 - beefWidth*2);
-            GameObject newBeef = Instantiate(objects[Random.Range(0, objects.Length)], canvas.transform);
+                canvasRect.rect.height / 2 - beefWidth * 2);
+            GameObject newBadProduct = Instantiate(objects[Random.Range(0, objects.Length)], canvas.transform);
+            newBadProduct.transform.SetSiblingIndex(1);
+            newBadProduct.GetComponent<RectTransform>().anchoredPosition = spawnPosition;
+            yield return new WaitForSeconds(Random.Range(0.3f, 0.7f));
+
+        }
+    }
+    IEnumerator Spawn2()
+    {
+
+        
+        while (timeLeft > 0)
+        {
+            
+            Vector2 spawnPosition2 = new Vector2(
+                Random.Range(-canvasRect.rect.width / 2 + beefWidth / 2, canvasRect.rect.width / 2 - beefWidth / 2),
+                canvasRect.rect.height / 2 - beefWidth * 2);
+            GameObject newBeef = Instantiate(beefPrefab, canvas.transform);
             newBeef.transform.SetSiblingIndex(1);
-            newBeef.GetComponent<RectTransform>().anchoredPosition = spawnPosition;
-            yield return new WaitForSeconds(Random.Range(0.6f, 1.4f));
+            newBeef.GetComponent<RectTransform>().anchoredPosition = spawnPosition2;
+            yield return new WaitForSeconds(Random.Range(3.0f, 3.5f));
         }
     }
     void UpdateText()
