@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
     public GameObject burgerPrefab;
     public GameObject colaPrefab;
     public GameObject fricePrefab;
-
+    public static int chek;
     public float timeLeft;
     public Text timerText;
     public Canvas canvas;
@@ -62,12 +62,8 @@ public class GameController : MonoBehaviour
     void EndOfGame()
     {
         SceneManager.LoadScene(1);
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if (currentSceneIndex == 1)
-        {
-
-            FeedBar.Feed();
-        }
+        chek = 1;
+        
            
 
     }

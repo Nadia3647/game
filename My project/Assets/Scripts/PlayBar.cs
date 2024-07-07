@@ -7,10 +7,13 @@ public class PlayBar : MonoBehaviour
 {
     public static Image Bar;
     float value;
+    float updateValue = 0.0f;
 
     private void Start()
     {
         Bar = GetComponent<Image>();
+        updateValue = PlayerPrefs.GetFloat("playBarBal");
+        Bar.fillAmount = updateValue;
     }
 
     public static void SetPlayBarValue(float value)
@@ -23,8 +26,9 @@ public class PlayBar : MonoBehaviour
     }
     public void Play()
     {
-
-        SetPlayBarValue(GetPlayBarValue() + 0.01f);
+        updateValue = GetPlayBarValue() + 0.01f;
+        PlayerPrefs.SetFloat("playBarBal", updateValue);
+        SetPlayBarValue(updateValue);
 
     }
 }

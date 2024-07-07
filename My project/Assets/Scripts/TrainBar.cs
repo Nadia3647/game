@@ -7,11 +7,15 @@ public class TrainBar : MonoBehaviour
 {
     public static Image Bar;
     float value;
+    float updateValue = 0.0f;
 
     private void Start()
     {
         Bar = GetComponent<Image>();
-         }
+        updateValue = PlayerPrefs.GetFloat("trainBarBal");
+        Bar.fillAmount = updateValue;
+
+    }
 
     public static void SetTrainBarValue(float value)
     {
@@ -23,8 +27,9 @@ public class TrainBar : MonoBehaviour
     }
     public void Train()
     {
-
-            SetTrainBarValue(GetTrainBarValue() + 0.01f);
+        updateValue = GetTrainBarValue() + 0.01f;
+        PlayerPrefs.SetFloat("trainBarBal",updateValue);
+        SetTrainBarValue(updateValue);
 
     }
 }

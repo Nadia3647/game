@@ -3,14 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using UnityEngine.SceneManagement;
+
 public class FeedBar : MonoBehaviour
 {
     public static Image Bar;
     float value;
+    static float updateValue = 0.0f;
 
     private void Start()
     {
         Bar = GetComponent<Image>();
+        updateValue = PlayerPrefs.GetFloat("feedBarBal");
+        Bar.fillAmount = updateValue;
+        if (GameController.chek == 1)
+        {
+            Feed();
+            GameController.chek = 0;
+        }
+
     }
 
     public static void SetFeedBarValue(float value)
@@ -23,9 +34,13 @@ public class FeedBar : MonoBehaviour
     }
     public static void Feed()
     {
-
-        SetFeedBarValue(GetFeedBarValue() + 0.01f);
-
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex == 1)
+        {
+            updateValue = GetFeedBarValue() + 0.01f*Score.score;
+            PlayerPrefs.SetFloat("feedBarBal", updateValue);
+            SetFeedBarValue(updateValue);
+        }
     }
 
 }
