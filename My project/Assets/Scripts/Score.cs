@@ -11,7 +11,7 @@ public class Score : MonoBehaviour
     public GameObject colaPrefab;
     public GameObject fricePrefab;
     public int ballValue;
-    private int score;
+    public static int score;
     // Start is called before the first frame update
     void Start()
     {

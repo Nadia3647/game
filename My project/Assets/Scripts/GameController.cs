@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -31,8 +32,10 @@ public class GameController : MonoBehaviour
         if (timeLeft<0)
         {
             timeLeft = 0;
+            Invoke("EndOfGame", 5);
         }
         UpdateText();
+
     }
 
     IEnumerator Spawn()
@@ -55,5 +58,17 @@ public class GameController : MonoBehaviour
     void UpdateText()
     {
         timerText.text = "Осталось:\n" + Mathf.RoundToInt(timeLeft);
+    }
+    void EndOfGame()
+    {
+        SceneManager.LoadScene(1);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex == 1)
+        {
+
+            FeedBar.Feed();
+        }
+           
+
     }
 }

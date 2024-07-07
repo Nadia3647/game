@@ -5,10 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: 74448f7ae573a5142a612e772e716acc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 8fcc43dc83e9d4b4981af89a8577821d
+  - enabled: 1
+    path: Assets/Scenes/Dragon Menu.unity
+    guid: c63c615c32c590a4183126c86497f3ba
+  - enabled: 1
+    path: Assets/Scenes/FeedGame.unity
+    guid: c64f948e5cae1844baddbfb9f3de5529
   m_configObjects: {}

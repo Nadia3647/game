@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TrainBar : MonoBehaviour
+public class FeedBar : MonoBehaviour
 {
     public static Image Bar;
     float value;
@@ -11,20 +11,21 @@ public class TrainBar : MonoBehaviour
     private void Start()
     {
         Bar = GetComponent<Image>();
-         }
+    }
 
-    public static void SetTrainBarValue(float value)
+    public static void SetFeedBarValue(float value)
     {
         Bar.fillAmount = value;
     }
-    public static float GetTrainBarValue()
+    public static float GetFeedBarValue()
     {
         return Bar.fillAmount;
     }
-    public void Train()
+    public static void Feed()
     {
 
-            SetTrainBarValue(GetTrainBarValue() + 0.01f);
+        SetFeedBarValue(GetFeedBarValue() + 0.01f);
 
     }
+
 }
