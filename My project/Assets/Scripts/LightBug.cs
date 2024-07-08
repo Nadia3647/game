@@ -3,19 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class LightBug : MonoBehaviour
+public class LightBug : MonoBehaviour, IPointerClickHandler
 {
-    int score=0;
-
-    void Update()
-
+    int lightScore = 0;
+    public void OnPointerClick(PointerEventData eventData)
     {
-        if (Input.GetMouseButtonDown(0) && EventSystem.current.IsPointerOverGameObject())
-        {
-            score++;
-            Debug.Log("Score: " + score);
-            Destroy(gameObject);
-        }
+        PlayerPrefs.SetInt("lightScore", lightScore);
+        Destroy(gameObject);
     }
-
 }

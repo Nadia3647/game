@@ -8,6 +8,7 @@ public class PlayBar : MonoBehaviour
     public static Image Bar;
     float value;
     float updateValue = 0.0f;
+    int playVal;
 
     private void Start()
     {
@@ -26,6 +27,8 @@ public class PlayBar : MonoBehaviour
     }
     public void Play()
     {
+        playVal = PlayerPrefs.GetInt("lightScore");
+
         updateValue = GetPlayBarValue() + 0.01f;
         PlayerPrefs.SetFloat("playBarBal", updateValue);
         SetPlayBarValue(updateValue);
