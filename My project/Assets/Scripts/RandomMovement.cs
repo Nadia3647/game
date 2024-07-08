@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class RandomMovement : MonoBehaviour
 {
     private RectTransform rectTransform;
+    public Canvas canvas;
     private Vector2 targetDirection;
     private RectTransform canvasRect;
     private float speed = 100f;
