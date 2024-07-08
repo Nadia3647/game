@@ -2027,6 +2027,7 @@ GameObject:
   - component: {fileID: 1842228159}
   - component: {fileID: 1842228158}
   - component: {fileID: 1842228157}
+  - component: {fileID: 1842228160}
   m_Layer: 0
   m_Name: Play Button
   m_TagString: Untagged
@@ -2098,10 +2099,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 339904495}
-        m_TargetAssemblyTypeName: PlayBar, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 1
+      - m_Target: {fileID: 1842228160}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: MoveToScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2148,6 +2149,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842228155}
   m_CullTransparentMesh: 1
+--- !u!114 &1842228160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842228155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b91beae65a2ad344a5e4cc4ab49b639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1845158582
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ TagManager:
   - Frice
   - Burger
   - Firefly
+  - Bird
+  - Coin
   layers:
   - Default
   - TransparentFX

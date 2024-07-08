@@ -80,9 +80,7 @@ public class GameController : MonoBehaviour
     void EndOfGame()
     {
         SceneManager.LoadScene(1);
-        chek = 1;
-        
-           
+        chek = 1;  
 
     }
 }

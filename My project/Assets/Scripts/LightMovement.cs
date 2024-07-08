@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class LightMovement : MonoBehaviour
 {
     public GameObject fireflyPrefab;
     public Canvas canvas;
     private RectTransform canvasRect;
     private float timeLeft = 10;
+    public static int chek;
 
     void Start()
     {
@@ -21,6 +24,8 @@ public class LightMovement : MonoBehaviour
         if (timeLeft < 0)
         {
             timeLeft = 0;
+            SceneManager.LoadScene(1);
+            chek = 1;
         }
     }
 
@@ -41,7 +46,7 @@ public class LightMovement : MonoBehaviour
     IEnumerator MoveRandomly(RectTransform objTransform)
     {
         Vector2 targetDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-        float speed = 300f; // ”кажите желаемую скорость движени€
+        float speed = 200f; // ”кажите желаемую скорость движени€
 
         while (objTransform != null)
         {
