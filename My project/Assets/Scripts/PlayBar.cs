@@ -8,7 +8,7 @@ public class PlayBar : MonoBehaviour
 {
     public static Image Bar;
     float value;
-    float static updateValue;
+    static float updateValue = 0.0f;
     static int playVal;
 
 
@@ -35,11 +35,11 @@ public class PlayBar : MonoBehaviour
     public static void Play()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if (currentSceneIndex == 3)
+        if (currentSceneIndex == 1)
         {
             playVal = PlayerPrefs.GetInt("lightScore");
             Debug.Log("Play: " + playVal);
-            updateValue = GetPlayBarValue() + 0.01f * playVal;
+            updateValue = GetPlayBarValue() + 0.01f * LightMovement.score;
             PlayerPrefs.SetFloat("playBarBal", updateValue);
             SetPlayBarValue(updateValue);
         }

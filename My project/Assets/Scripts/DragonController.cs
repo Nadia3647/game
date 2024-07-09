@@ -25,7 +25,7 @@ public class DragonController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = Vector2.zero;
-        rb.velocity = new Vector2(direction * moveSpeed * Time.fixedTime*100, 0);
+        rb.velocity = new Vector2(direction * moveSpeed * Time.fixedTime*50, 0);
     }
     void OnTriggerEnter2D(Collider2D other)
     {

@@ -9,13 +9,15 @@ public class LightMovement : MonoBehaviour
     public GameObject fireflyPrefab;
     public Canvas canvas;
     private RectTransform canvasRect;
-    private float timeLeft = 10;
+    private float timeLeft = 30;
     public static int chek;
+    public static int score;
 
     void Start()
     {
         canvasRect = canvas.GetComponent<RectTransform>();
         StartCoroutine(Spawn());
+        score=0;
     }
 
     void FixedUpdate()

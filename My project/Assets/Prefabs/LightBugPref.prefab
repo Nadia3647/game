@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 9085357444210342876}
   - component: {fileID: 1224914720075312518}
   - component: {fileID: 284134078237011081}
-  - component: {fileID: 1313836890298598708}
   - component: {fileID: -1348940886661982603}
+  - component: {fileID: 3892884797569950617}
   m_Layer: 5
   m_Name: LightBugPref
   m_TagString: Untagged
@@ -151,18 +151,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1313836890298598708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216315288339239025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f1d0ab507e00984f824c2cc5847c560, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &-1348940886661982603
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -215,3 +203,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3892884797569950617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216315288339239025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 828ccb9bb994255408621111fb03d51c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

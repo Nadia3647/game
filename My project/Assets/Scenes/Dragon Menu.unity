@@ -758,6 +758,7 @@ GameObject:
   - component: {fileID: 657527231}
   - component: {fileID: 657527230}
   - component: {fileID: 657527229}
+  - component: {fileID: 657527232}
   m_Layer: 0
   m_Name: Train Button
   m_TagString: Untagged
@@ -829,14 +830,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 59598373}
-        m_TargetAssemblyTypeName: TrainBar, Assembly-CSharp
-        m_MethodName: Train
-        m_Mode: 1
+      - m_Target: {fileID: 657527232}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: MoveToScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -879,6 +880,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657527227}
   m_CullTransparentMesh: 1
+--- !u!114 &657527232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657527227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b91beae65a2ad344a5e4cc4ab49b639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &680104358
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,7 +2119,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
