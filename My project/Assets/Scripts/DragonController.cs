@@ -5,38 +5,45 @@ using UnityEngine.SceneManagement;
 
 public class DragonController : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    public float moveSpeed = 10.0f; // Увеличьте это значение для увеличения скорости перемещения
-
-    private float direction;
+    public Camera cam;
+    private float maxWidth;
+    public static int score;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        score = 0;
+        if (cam == null)
+        {
+            cam = Camera.main;
+        }
+        Vector3 upperCorner = new Vector3(Screen.width, Screen.height, 0.0f);
+        Vector3 targetWidth = cam.ScreenToWorldPoint(upperCorner);
+        maxWidth = targetWidth.x;
     }
 
     // Update is called once per frame
     void Update()
     {
-        direction = Input.GetAxisRaw("Horizontal");
+        float movement = Input.GetAxis("Horizontal")*10;
+        float targetX = Mathf.Clamp(transform.position.x + movement, 0, 1920);
+        Vector3 targetPosition = new Vector3(targetX, transform.position.y, transform.position.z);
+        transform.position = targetPosition;
     }
 
-    private void FixedUpdate()
-    {
-        rb.velocity = Vector2.zero;
-        rb.velocity = new Vector2(direction * moveSpeed * Time.fixedTime*50, 0);
-    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bird"))
         {
            SceneManager.LoadScene(1);
+            Birds.chek = 1;
+
         
         }
         else if (other.CompareTag("Coin"))
         {
             Destroy(other.gameObject); // Уничтожение монеты после сбора
+            score += 1;
         }
     }
 }

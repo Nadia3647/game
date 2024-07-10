@@ -9,9 +9,10 @@ public class LightMovement : MonoBehaviour
     public GameObject fireflyPrefab;
     public Canvas canvas;
     private RectTransform canvasRect;
-    private float timeLeft = 30;
+    private float timeLeft = 60;
     public static int chek;
     public static int score;
+    private int lightCount = 0;
 
     void Start()
     {
@@ -33,7 +34,7 @@ public class LightMovement : MonoBehaviour
 
     IEnumerator Spawn()
     {
-        while (timeLeft > 0)
+        while (timeLeft > 0 && lightCount<40)
         {
             Vector2 spawnPosition = new Vector2(
                 Random.Range(-canvasRect.rect.width / 2, canvasRect.rect.width / 2),
@@ -41,6 +42,7 @@ public class LightMovement : MonoBehaviour
             GameObject newFirefly = Instantiate(fireflyPrefab, canvas.transform);
             newFirefly.GetComponent<RectTransform>().anchoredPosition = spawnPosition;
             StartCoroutine(MoveRandomly(newFirefly.GetComponent<RectTransform>()));
+            lightCount++;
             yield return new WaitForSeconds(Random.Range(0.3f, 0.7f));
         }
     }

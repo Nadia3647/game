@@ -2,18 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TrainBar : MonoBehaviour
 {
     public static Image Bar;
     float value;
-    float updateValue = 0.0f;
+    static float updateValue = 0.0f;
 
     private void Start()
     {
         Bar = GetComponent<Image>();
         updateValue = PlayerPrefs.GetFloat("trainBarBal");
         Bar.fillAmount = updateValue;
+        if (Birds.chek == 1)
+        {
+            Train();
+            Birds.chek = 0;
+        }
 
     }
 
@@ -25,11 +31,15 @@ public class TrainBar : MonoBehaviour
     {
         return Bar.fillAmount;
     }
-    public void Train()
+    public static void Train()
     {
-        updateValue = GetTrainBarValue() + 0.01f;
-        PlayerPrefs.SetFloat("trainBarBal",updateValue);
-        SetTrainBarValue(updateValue);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex == 1)
+        {
+            updateValue = GetTrainBarValue() + 0.03125f*DragonController.score;
+            PlayerPrefs.SetFloat("trainBarBal", updateValue);
+            SetTrainBarValue(updateValue);
+        }
 
     }
 }

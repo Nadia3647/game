@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
     private RectTransform canvasRect;
     private float beefWidth;
 
+    private int beefCount = 0;
+    private int otherObjectsCount = 0;
     void Start()
     {
 
@@ -45,7 +47,7 @@ public class GameController : MonoBehaviour
         // Создание массива объектов
         GameObject[] objects = new GameObject[]{burgerPrefab,beefPrefab, colaPrefab, fricePrefab };
 
-        while (timeLeft>0)
+        while (timeLeft>0 && otherObjectsCount < 60)
         {
             Vector2 spawnPosition = new Vector2(
                 Random.Range(-canvasRect.rect.width / 2 + beefWidth / 2, canvasRect.rect.width / 2 - beefWidth / 2),
@@ -53,7 +55,9 @@ public class GameController : MonoBehaviour
             GameObject newBadProduct = Instantiate(objects[Random.Range(0, objects.Length)], canvas.transform);
             newBadProduct.transform.SetSiblingIndex(1);
             newBadProduct.GetComponent<RectTransform>().anchoredPosition = spawnPosition;
-            yield return new WaitForSeconds(Random.Range(0.3f, 0.7f));
+            otherObjectsCount++;
+            Debug.Log("Other: " + otherObjectsCount);
+            yield return new WaitForSeconds(Random.Range(0.9f, 1.2f));
 
         }
     }
@@ -61,7 +65,7 @@ public class GameController : MonoBehaviour
     {
 
         
-        while (timeLeft > 0)
+        while (timeLeft > 0 && beefCount < 40)
         {
             
             Vector2 spawnPosition2 = new Vector2(
@@ -70,7 +74,10 @@ public class GameController : MonoBehaviour
             GameObject newBeef = Instantiate(beefPrefab, canvas.transform);
             newBeef.transform.SetSiblingIndex(1);
             newBeef.GetComponent<RectTransform>().anchoredPosition = spawnPosition2;
-            yield return new WaitForSeconds(Random.Range(3.0f, 3.5f));
+            beefCount++;
+
+            Debug.Log("Beef: " + beefCount);
+            yield return new WaitForSeconds(Random.Range(1.3f, 1.6f));
         }
     }
     void UpdateText()

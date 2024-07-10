@@ -37,7 +37,7 @@ public class FeedBar : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         if (currentSceneIndex == 1)
         {
-            updateValue = GetFeedBarValue() + 0.01f*Score.score;
+            updateValue = GetFeedBarValue() + 0.025f*Score.score;
             PlayerPrefs.SetFloat("feedBarBal", updateValue);
             SetFeedBarValue(updateValue);
         }

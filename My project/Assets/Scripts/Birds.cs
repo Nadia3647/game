@@ -11,8 +11,11 @@ public class Birds : MonoBehaviour
     public Canvas canvas;
     public Text timerText;
     public float timeLeft;
+    public static int chek;
     private float beefWidth;
     private RectTransform canvasRect;
+    static float spawnX;
+    private int coinCount = 0;
 
 
 
@@ -20,7 +23,7 @@ public class Birds : MonoBehaviour
     {
         canvasRect = canvas.GetComponent<RectTransform>();
         beefWidth = birdPrefab.GetComponent<RectTransform>().rect.width;
-
+        StartCoroutine(Spawn1());
         StartCoroutine(Spawn2());
         UpdateText();
     }
@@ -31,18 +34,17 @@ public class Birds : MonoBehaviour
         if (timeLeft < 0)
         {
             timeLeft = 0;
+            chek = 1;
             Invoke("EndOfGame", 5);
         }
         UpdateText();
     }
 
-    IEnumerator Spawn2()
+    IEnumerator Spawn1()
     {
       
         while (timeLeft > 0)
         {
-            float spawnX;
-            GameObject pref;
             float randomValue = Random.value;
             float randomValPref = Random.value;
 
@@ -61,23 +63,49 @@ public class Birds : MonoBehaviour
 
             float spawnY = canvasRect.rect.height / 2;
             Vector2 spawnPosition2 = new Vector2(spawnX, spawnY);
-            if (randomValue > 0.5f) // Выбираем левый край canvas
-            {
-                pref = birdPrefab;
-            }
             
-            else // Выбираем правый край canvas
-            {
-                pref = coinPrefab;
-            }
-            GameObject newBeef = Instantiate(pref, canvas.transform);
+            GameObject newBeef = Instantiate(birdPrefab, canvas.transform);
             newBeef.transform.SetSiblingIndex(1);
             newBeef.GetComponent<RectTransform>().anchoredPosition = spawnPosition2;
-            yield return new WaitForSeconds(Random.Range(3.0f, 8.5f));
-
-
+            yield return new WaitForSeconds(2.0f);
         }
+    }
+    IEnumerator Spawn2()
+    {
 
+        while (timeLeft > 0 && coinCount < 32)
+        {
+            float spawnXCoin;
+            GameObject pref;
+            float randomValueCoin = Random.value;
+            float randomValPref = Random.value;
+
+            if (randomValueCoin < 0.33f) // Выбираем левый край canvas
+            {
+                spawnXCoin = -canvasRect.rect.width / 2 + beefWidth / 2;
+            }
+            else if (randomValueCoin < 0.66f) // Выбираем середину canvas
+            {
+                spawnXCoin = 0f;
+            }
+            else // Выбираем правый край canvas
+            {
+                spawnXCoin = canvasRect.rect.width / 2 - beefWidth / 2;
+            }
+
+            float spawnY = canvasRect.rect.height / 2;
+            if (spawnXCoin != spawnX)
+            {
+                Debug.Log("Other: " + spawnX + " coin" + spawnXCoin);
+                Vector2 spawnPosition2 = new Vector2(spawnXCoin, spawnY);
+
+                GameObject newBeef = Instantiate(coinPrefab, canvas.transform);
+                newBeef.transform.SetSiblingIndex(1);
+                newBeef.GetComponent<RectTransform>().anchoredPosition = spawnPosition2;
+                coinCount++;
+                yield return new WaitForSeconds(2.0f);
+            }
+        }
     }
     void UpdateText()
     {

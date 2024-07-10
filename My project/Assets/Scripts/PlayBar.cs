@@ -39,7 +39,7 @@ public class PlayBar : MonoBehaviour
         {
             playVal = PlayerPrefs.GetInt("lightScore");
             Debug.Log("Play: " + playVal);
-            updateValue = GetPlayBarValue() + 0.01f * LightMovement.score;
+            updateValue = GetPlayBarValue() + 0.04f * LightMovement.score;
             PlayerPrefs.SetFloat("playBarBal", updateValue);
             SetPlayBarValue(updateValue);
         }
