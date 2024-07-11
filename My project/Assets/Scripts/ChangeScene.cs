@@ -6,8 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
+    public static int chek;
     public void MoveToScene(int sceneID)
     {
         SceneManager.LoadScene(sceneID);
+        if (sceneID == 0)
+        {
+            chek = 1;
+        }
+
     }
 }

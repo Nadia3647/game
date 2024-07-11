@@ -2,18 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayBar : MonoBehaviour
 {
     public static Image Bar;
     float value;
-    float updateValue = 0.0f;
+    static float updateValue = 0.0f;
+    static int playVal;
+
 
     private void Start()
     {
         Bar = GetComponent<Image>();
         updateValue = PlayerPrefs.GetFloat("playBarBal");
         Bar.fillAmount = updateValue;
+        if (LightMovement.chek == 1)
+        {
+            Play();
+            GameController.chek = 0;
+        }
     }
 
     public static void SetPlayBarValue(float value)
@@ -24,11 +32,17 @@ public class PlayBar : MonoBehaviour
     {
         return Bar.fillAmount;
     }
-    public void Play()
+    public static void Play()
     {
-        updateValue = GetPlayBarValue() + 0.01f;
-        PlayerPrefs.SetFloat("playBarBal", updateValue);
-        SetPlayBarValue(updateValue);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex == 1)
+        {
+            playVal = PlayerPrefs.GetInt("lightScore");
+            Debug.Log("Play: " + playVal);
+            updateValue = GetPlayBarValue() + (0.04f * LightMovement.score)/4;
+            PlayerPrefs.SetFloat("playBarBal", updateValue);
+            SetPlayBarValue(updateValue);
+        }
 
     }
 }

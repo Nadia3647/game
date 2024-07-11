@@ -535,7 +535,7 @@ MonoBehaviour:
   burgerPrefab: {fileID: 4813441548899770996, guid: 851bb655fcffd9044923b7589044d729, type: 3}
   colaPrefab: {fileID: 8227354195144243404, guid: 8239ae4fedd6e004a9d6e3e5b791ec23, type: 3}
   fricePrefab: {fileID: 8991064774167777352, guid: f465342d4633ef94b92e6ac00f79a57f, type: 3}
-  timeLeft: 20
+  timeLeft: 60
   timerText: {fileID: 321849799}
   canvas: {fileID: 290576393}
 --- !u!4 &573182199
@@ -830,7 +830,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 451941ec90ec2f8438ffab51876ae531, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

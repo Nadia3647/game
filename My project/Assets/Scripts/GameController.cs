@@ -17,13 +17,16 @@ public class GameController : MonoBehaviour
     private RectTransform canvasRect;
     private float beefWidth;
 
+    private int beefCount = 0;
+    private int otherObjectsCount = 0;
     void Start()
     {
 
         canvasRect = canvas.GetComponent<RectTransform>();
         beefWidth = beefPrefab.GetComponent<RectTransform>().rect.width;
 
-        StartCoroutine(Spawn());
+        StartCoroutine(Spawn1());
+        StartCoroutine(Spawn2());
         UpdateText();
     }
     void FixedUpdate()
@@ -38,21 +41,43 @@ public class GameController : MonoBehaviour
 
     }
 
-    IEnumerator Spawn()
+    IEnumerator Spawn1()
     {
 
         // Создание массива объектов
         GameObject[] objects = new GameObject[]{burgerPrefab,beefPrefab, colaPrefab, fricePrefab };
 
-        while (timeLeft>0)
+        while (timeLeft>0 && otherObjectsCount < 80)
         {
             Vector2 spawnPosition = new Vector2(
                 Random.Range(-canvasRect.rect.width / 2 + beefWidth / 2, canvasRect.rect.width / 2 - beefWidth / 2),
-                canvasRect.rect.height/2 - beefWidth*2);
-            GameObject newBeef = Instantiate(objects[Random.Range(0, objects.Length)], canvas.transform);
+                canvasRect.rect.height / 2 - beefWidth * 2);
+            GameObject newBadProduct = Instantiate(objects[Random.Range(0, objects.Length)], canvas.transform);
+            newBadProduct.transform.SetSiblingIndex(1);
+            newBadProduct.GetComponent<RectTransform>().anchoredPosition = spawnPosition;
+            otherObjectsCount++;
+            Debug.Log("Other: " + otherObjectsCount);
+            yield return new WaitForSeconds(Random.Range(0.5f, 0.9f));
+
+        }
+    }
+    IEnumerator Spawn2()
+    {
+
+        
+        while (timeLeft > 0 && beefCount < 40)
+        {
+            
+            Vector2 spawnPosition2 = new Vector2(
+                Random.Range(-canvasRect.rect.width / 2 + beefWidth / 2, canvasRect.rect.width / 2 - beefWidth / 2),
+                canvasRect.rect.height / 2 - beefWidth * 2);
+            GameObject newBeef = Instantiate(beefPrefab, canvas.transform);
             newBeef.transform.SetSiblingIndex(1);
-            newBeef.GetComponent<RectTransform>().anchoredPosition = spawnPosition;
-            yield return new WaitForSeconds(Random.Range(0.6f, 1.4f));
+            newBeef.GetComponent<RectTransform>().anchoredPosition = spawnPosition2;
+            beefCount++;
+
+            Debug.Log("Beef: " + beefCount);
+            yield return new WaitForSeconds(Random.Range(1.3f, 1.6f));
         }
     }
     void UpdateText()
@@ -62,9 +87,7 @@ public class GameController : MonoBehaviour
     void EndOfGame()
     {
         SceneManager.LoadScene(1);
-        chek = 1;
-        
-           
+        chek = 1;  
 
     }
 }
