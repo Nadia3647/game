@@ -36,7 +36,7 @@ public class TrainBar : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         if (currentSceneIndex == 1)
         {
-            updateValue = GetTrainBarValue() + 0.03125f*DragonController.score;
+            updateValue = GetTrainBarValue() + (0.03125f*DragonController.score)/4;
             PlayerPrefs.SetFloat("trainBarBal", updateValue);
             SetTrainBarValue(updateValue);
         }

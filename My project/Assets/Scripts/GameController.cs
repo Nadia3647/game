@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour
         // Создание массива объектов
         GameObject[] objects = new GameObject[]{burgerPrefab,beefPrefab, colaPrefab, fricePrefab };
 
-        while (timeLeft>0 && otherObjectsCount < 60)
+        while (timeLeft>0 && otherObjectsCount < 80)
         {
             Vector2 spawnPosition = new Vector2(
                 Random.Range(-canvasRect.rect.width / 2 + beefWidth / 2, canvasRect.rect.width / 2 - beefWidth / 2),
@@ -57,7 +57,7 @@ public class GameController : MonoBehaviour
             newBadProduct.GetComponent<RectTransform>().anchoredPosition = spawnPosition;
             otherObjectsCount++;
             Debug.Log("Other: " + otherObjectsCount);
-            yield return new WaitForSeconds(Random.Range(0.9f, 1.2f));
+            yield return new WaitForSeconds(Random.Range(0.5f, 0.9f));
 
         }
     }
