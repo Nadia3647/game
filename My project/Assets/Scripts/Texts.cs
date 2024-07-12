@@ -1,6 +1,7 @@
 using Ink.Runtime;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -29,6 +30,8 @@ public class Texts : MonoBehaviour
         _choiceButton = textInstaller.choiceButton;
     }
 
+    private CharacterManager _characterManager;
+
     private void Awake()
     {
         _story = new Story(_inkJson.text);
@@ -36,11 +39,18 @@ public class Texts : MonoBehaviour
 
     void Start()
     {
+        _characterManager = FindObjectOfType<CharacterManager>();
         StartText();
     }
 
     public void StartText()
     {
+        _story.BindExternalFunction("Show",
+            (string name, string position, string mood) => _characterManager.ShowCharacter(name, position, mood));
+
+        _story.BindExternalFunction("Hide",
+            (string name) => _characterManager.HideCharacter(name));
+
         TextOn = true;
         _textPanel.SetActive(true);
         NextText();
@@ -61,10 +71,10 @@ public class Texts : MonoBehaviour
 
     public void ShowText()
     {
+        _mainText.text = _story.Continue();
         _nameText.text = (string)_story.variablesState["speakerName"];
         if (_nameText.text != "") { _namePanel.SetActive(true); }
         else { _namePanel.SetActive(false); }
-        _mainText.text = _story.Continue();
     }
 
     public void ShowButtons()
@@ -72,6 +82,9 @@ public class Texts : MonoBehaviour
         List<Choice> choices = _story.currentChoices;
         choicePanel.SetActive(choices.Count != 0);
         if (choices.Count == 0) { return; }
+        _textPanel.SetActive(false);
+        choicePanel.transform.Cast<Transform>().ToList().ForEach(child => Destroy(child.gameObject));
+        _choiceTexts.Clear();
         for (int i = 0; i < choices.Count; i++)
         {
             GameObject button = Instantiate(_choiceButton);
@@ -85,6 +98,7 @@ public class Texts : MonoBehaviour
     public void ButtonAction(int choiceIndex)
     {
         _story.ChooseChoiceIndex(choiceIndex);
+        _textPanel.SetActive(true);
         NextText(true);
     }
 
