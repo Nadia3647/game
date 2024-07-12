@@ -5,25 +5,36 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    private AudioSource audioSrc;
+    private static List<AudioSource> audioSources = new List<AudioSource>();
+    private float musicVolume = 1f; // Громкость 
 
-    private float musicVolume = 1f; //Громкость
-
-
-    // Start is called before the first frame update
+    // Start is called before the first frame update 
     void Start()
     {
-        audioSrc = GetComponent<AudioSource>();
+        FindAllAudioSources(); // Находим все AudioSource в проекте
     }
 
-    // Update is called once per frame
+    // Update is called once per frame 
     void Update()
     {
-        audioSrc.volume = musicVolume;
+        foreach (AudioSource audioSrc in audioSources)
+        {
+            audioSrc.volume = musicVolume; // Устанавливаем громкость для всех AudioSource 
+        }
     }
 
-    public void ChangeVolume(float vol) //Изменение звука
+    public void ChangeVolume(float vol) // Изменение звука 
     {
-        musicVolume  = vol;
+        musicVolume = vol;
+    }
+
+    private void FindAllAudioSources()
+    {
+        AudioSource[] allAudioSources = FindObjectsOfType<AudioSource>(); // Находим все AudioSource в проекте
+
+        foreach (AudioSource audioSrc in allAudioSources)
+        {
+            audioSources.Add(audioSrc); // Добавляем каждый AudioSource в список
+        }
     }
 }

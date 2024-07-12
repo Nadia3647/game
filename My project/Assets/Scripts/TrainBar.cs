@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TrainBar : MonoBehaviour
 {
     public static Image Bar;
     float value;
-    private static float lastClickTime;
-    // Start is called before the first frame update
+    static float updateValue = 0.0f;
+
     private void Start()
     {
         Bar = GetComponent<Image>();
-        lastClickTime = -3600; // чтобы сразу можно было нажать кнопку после запуска игры
+        updateValue = PlayerPrefs.GetFloat("trainBarBal");
+        Bar.fillAmount = updateValue;
+        if (Birds.chek == 1)
+        {
+            Train();
+            Birds.chek = 0;
+        }
+
     }
 
     public static void SetTrainBarValue(float value)
@@ -23,12 +31,15 @@ public class TrainBar : MonoBehaviour
     {
         return Bar.fillAmount;
     }
-    public void Train()
+    public static void Train()
     {
-        if (Time.time - lastClickTime > 3500) // ѕровер€ем прошло ли больше часа (3600 секунд)
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex == 1)
         {
-            SetTrainBarValue(GetTrainBarValue() + 0.01f);
-            lastClickTime = Time.time; // ќбновл€ем врем€ последнего нажати€
+            updateValue = GetTrainBarValue() + (0.03125f*DragonController.score)/4;
+            PlayerPrefs.SetFloat("trainBarBal", updateValue);
+            SetTrainBarValue(updateValue);
         }
+
     }
 }

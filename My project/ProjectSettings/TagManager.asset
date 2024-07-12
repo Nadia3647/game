@@ -5,14 +5,20 @@ TagManager:
   serializedVersion: 2
   tags:
   - Beef
+  - Cola
+  - Frice
+  - Burger
+  - Firefly
+  - Bird
+  - Coin
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - basket
   - Water
   - UI
-  - 
+  - basket2
   - 
   - 
   - 
