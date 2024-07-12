@@ -570,7 +570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &912209802
 RectTransform:
   m_ObjectHideFlags: 0
@@ -629,14 +629,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.8901961}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6b59f90b3aab0704687ed93c54d8bef1, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1220,6 +1220,8 @@ GameObject:
   - component: {fileID: 1916522923}
   - component: {fileID: 1916522922}
   - component: {fileID: 1916522921}
+  - component: {fileID: 1916522926}
+  - component: {fileID: 1916522925}
   m_Layer: 0
   m_Name: Characters Panel
   m_TagString: Untagged
@@ -1297,7 +1299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: 2
-  Fine: {fileID: 21300000, guid: 579764ddd6fd7e1498bfa4f42ee7dfe0, type: 3}
+  Fine: {fileID: 21300000, guid: 39c686468520e7d43bba5c9c6cb347ae, type: 3}
 --- !u!114 &1916522922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1311,7 +1313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: 1
-  Fine: {fileID: 21300000, guid: 3c6d57f828bcd49418ba6037dddc20db, type: 3}
+  Fine: {fileID: 21300000, guid: 4e3bea37f42d7b44b89e7506a265d619, type: 3}
 --- !u!114 &1916522923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1325,7 +1327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: 0
-  Fine: {fileID: 21300000, guid: 8e19bb0e97154b9418e95ae37ead87f0, type: 3}
+  Fine: {fileID: 21300000, guid: f50657fac83398e408f17c442e5120b9, type: 3}
 --- !u!114 &1916522924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1342,8 +1344,36 @@ MonoBehaviour:
   _main: {fileID: 1916522923}
   _grandpa: {fileID: 1916522922}
   _grandma: {fileID: 1916522921}
-  _raven: {fileID: 0}
-  _dragon: {fileID: 0}
+  _raven: {fileID: 1916522926}
+  _dragon: {fileID: 1916522925}
+--- !u!114 &1916522925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916522916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255a44a1805a5c24a8504e4747b01c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 4
+  Fine: {fileID: 21300000, guid: d616fa44198fa7541ad04794c0cf5f68, type: 3}
+--- !u!114 &1916522926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916522916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255a44a1805a5c24a8504e4747b01c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 3
+  Fine: {fileID: 21300000, guid: b2ebf3b210d46c64a91c296ec0bbc6d1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
