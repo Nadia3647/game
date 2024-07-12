@@ -16,20 +16,38 @@ public class Birds : MonoBehaviour
     private RectTransform canvasRect;
     static float spawnX;
     private int coinCount = 0;
-
-
+    private bool isPaused = false;
+    private Coroutine spawnCoroutine1;
+    private Coroutine spawnCoroutine2;
 
     void Start()
     {
         canvasRect = canvas.GetComponent<RectTransform>();
         beefWidth = birdPrefab.GetComponent<RectTransform>().rect.width;
-        StartCoroutine(Spawn1());
-        StartCoroutine(Spawn2());
+        spawnCoroutine1 = StartCoroutine(Spawn1());
+        spawnCoroutine2 = StartCoroutine(Spawn2());
         UpdateText();
     }
 
-    void FixedUpdate()
+    void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isPaused = !isPaused;
+            if (isPaused)
+            {
+                StopCoroutine(spawnCoroutine1);
+                StopCoroutine(spawnCoroutine2);
+                Time.timeScale = 0f; // останавливаем время
+            }
+            else
+            {
+                spawnCoroutine1 = StartCoroutine(Spawn1());
+                spawnCoroutine2 = StartCoroutine(Spawn2());
+                Time.timeScale = 1f; // возобновляем время
+            }
+        }
+
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0)
         {
@@ -65,7 +83,6 @@ public class Birds : MonoBehaviour
             Vector2 spawnPosition2 = new Vector2(spawnX, spawnY);
             
             GameObject newBeef = Instantiate(birdPrefab, canvas.transform);
-            newBeef.transform.SetSiblingIndex(1);
             newBeef.GetComponent<RectTransform>().anchoredPosition = spawnPosition2;
             yield return new WaitForSeconds(2.0f);
         }
@@ -100,7 +117,6 @@ public class Birds : MonoBehaviour
                 Vector2 spawnPosition2 = new Vector2(spawnXCoin, spawnY);
 
                 GameObject newBeef = Instantiate(coinPrefab, canvas.transform);
-                newBeef.transform.SetSiblingIndex(1);
                 newBeef.GetComponent<RectTransform>().anchoredPosition = spawnPosition2;
                 coinCount++;
                 yield return new WaitForSeconds(2.0f);

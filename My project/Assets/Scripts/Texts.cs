@@ -17,6 +17,7 @@ public class Texts : MonoBehaviour
     private GameObject _choiceButton;
     private List<TextMeshProUGUI> _choiceTexts = new();
     public bool TextOn { get; private set; }
+
     [Inject]
     public void Construct(TextInstaller textInstaller)
     {
@@ -36,6 +37,17 @@ public class Texts : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(WaitForCharacterName());
+    }
+
+    private IEnumerator WaitForCharacterName()
+    {
+        while (string.IsNullOrEmpty(EnterName.charaterName))
+        {
+            yield return null;
+        }
+
+        _story.variablesState["mainName"] = EnterName.charaterName;
         StartText();
     }
 
@@ -48,14 +60,17 @@ public class Texts : MonoBehaviour
 
     public void NextText(bool choiceOn = false)
     {
-        if (_story.canContinue)
+        if (EnterName.check == 1) // Проверяем значение переменной check
         {
-            ShowText();
-            ShowButtons();
-        }
-        else if(!choiceOn)
-        {
-            EndText();
+            if (_story.canContinue)
+            {
+                ShowText();
+                ShowButtons();
+            }
+            else if (!choiceOn)
+            {
+                EndText();
+            }
         }
     }
 
@@ -82,6 +97,7 @@ public class Texts : MonoBehaviour
             _choiceTexts.Add(buttonText);
         }
     }
+
     public void ButtonAction(int choiceIndex)
     {
         _story.ChooseChoiceIndex(choiceIndex);
