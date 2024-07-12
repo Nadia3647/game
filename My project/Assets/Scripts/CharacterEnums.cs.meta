@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:My project/Assets/Scripts/CharacterEnums.cs.meta
 guid: 44c8c337732f04a43844f229736e6440
+========
+guid: 928ebe6b1ad5f7d47b562792fe111991
+>>>>>>>> all:My project/Assets/Scripts/Birds.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
