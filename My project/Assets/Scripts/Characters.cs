@@ -16,7 +16,7 @@ public class Characters : MonoBehaviour
     private float _offScreenX;
     private float _onScreenX;
 
-    private readonly float _animationSpeed = 1f;
+    private readonly float _animationSpeed = 1/6f;
 
     public void Init(CharacterName name, CharacterPosition position, CharacterMood mood, CharacterMoods moods)
     {
@@ -72,25 +72,17 @@ public class Characters : MonoBehaviour
         {
             case CharacterPosition._1_2:
                 _onScreenX = Screen.width * 1/2f;
-                _offScreenX = Screen.width * 5/4f;
+                _offScreenX = -Screen.width * 1/5f;
                 break;
 
-            case CharacterPosition._1_3:
-                _onScreenX = Screen.width * 1/3f;
-                _offScreenX = -Screen.width * 1/4f;
+            case CharacterPosition._1_5:
+                _onScreenX = Screen.width * 1/5f;
+                _offScreenX = -Screen.width * 1/5f;
                 break;
 
-            case CharacterPosition._2_3:
-                _onScreenX = Screen.width * 2/3f;
-                _offScreenX = Screen.width * 5/4f;
-                break;
-            case CharacterPosition._1_4:
-                _onScreenX = Screen.width * 1/4f;
-                _offScreenX = -Screen.width * 1/4f;
-                break;
-            case CharacterPosition._3_4:
-                _onScreenX = Screen.width * 3/4f;
-                _offScreenX = Screen.width * 5/4f;
+            case CharacterPosition._4_5:
+                _onScreenX = Screen.width * 4/5f;
+                _offScreenX = Screen.width * 6/5f;
                 break;
         }
     }

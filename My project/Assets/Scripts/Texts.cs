@@ -82,7 +82,6 @@ public class Texts : MonoBehaviour
         List<Choice> choices = _story.currentChoices;
         choicePanel.SetActive(choices.Count != 0);
         if (choices.Count == 0) { return; }
-        _textPanel.SetActive(false);
         choicePanel.transform.Cast<Transform>().ToList().ForEach(child => Destroy(child.gameObject));
         _choiceTexts.Clear();
         for (int i = 0; i < choices.Count; i++)
@@ -98,7 +97,6 @@ public class Texts : MonoBehaviour
     public void ButtonAction(int choiceIndex)
     {
         _story.ChooseChoiceIndex(choiceIndex);
-        _textPanel.SetActive(true);
         NextText(true);
     }
 
