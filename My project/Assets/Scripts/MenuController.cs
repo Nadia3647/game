@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    public GameObject menuPanel;
     private static MenuController instance;
+    int index;
 
     void Awake()
     {
@@ -24,12 +25,17 @@ public class MenuController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ToggleMenu();
+            if (SceneManager.GetActiveScene().buildIndex != 6)
+            {
+                index = SceneManager.GetActiveScene().buildIndex;
+                SceneManager.LoadScene(6);
+            }
+            else
+            {
+                SceneManager.LoadScene(index);
+            }
         }
     }
 
-    void ToggleMenu()
-    {
-        menuPanel.SetActive(!menuPanel.activeSelf);
-    }
+    
 }
