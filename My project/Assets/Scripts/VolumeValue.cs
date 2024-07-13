@@ -4,26 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
+
 {
-    private AudioSource audioSrc;
+    public Slider volumeSlider;
+    public AudioSource backgroundMusic;
 
-    private float musicVolume = 1f; //Громкость
-
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        audioSrc = GetComponent<AudioSource>();
+        if (backgroundMusic == null)
+        {
+            Debug.LogError("AudioSource is not assigned in the inspector!");
+        }
+        volumeSlider.onValueChanged.AddListener(SetVolume);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetVolume(float volume)
     {
-        audioSrc.volume = musicVolume;
-    }
-
-    public void ChangeVolume(float vol) //Изменение звука
-    {
-        musicVolume  = vol;
+        backgroundMusic.volume = volume;
     }
 }

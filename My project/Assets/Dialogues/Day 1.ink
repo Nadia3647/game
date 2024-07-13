@@ -10,8 +10,7 @@ EXTERNAL Show(characterName, position, mood)
 EXTERNAL Hide(characterName)
 
 == Intro
-    [Сделать ввод имени главного героя]
-    ~ mainName = "МаНя"
+    ~ mainName = "Мейра"
     Я еду на турнир. Чтобы меня не узнали, я надела старый плащ c и повязку на лицо.
     ~ speakerName = mainName
     Мы уже близко, не волнуйся. Всё будет хорошо.
@@ -388,5 +387,5 @@ EXTERNAL Hide(characterName)
     {Show("main", "_1_5", "Fine")}{Show("dragon", "_4_5", "Fine")}
     Надо дать тебе имя, раз ты пока что у нас.
     Я назову тебя...
-    [Сделать ввод имени дракона]
+
 -> END
