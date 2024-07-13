@@ -30,6 +30,10 @@ public class CharacterManager : MonoBehaviour
     private CharacterMoods _Archi;
     [SerializeField]
     private CharacterMoods _Emmet;
+    [SerializeField]
+    private CharacterMoods _Org;
+    [SerializeField]
+    private CharacterMoods _Passer;
 
     private void Start()
     {
@@ -156,6 +160,10 @@ public class CharacterManager : MonoBehaviour
                 return _Archi;
             case CharacterName.Emmet:
                 return _Emmet;
+            case CharacterName.org:
+                return _Org;
+            case CharacterName.passer:
+                return _Passer;
             default:
                 Debug.LogError($"Could not find moodset for {name}");
                 return null;
