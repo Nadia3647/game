@@ -20,7 +20,7 @@ public class PlayBar : MonoBehaviour
         if (LightMovement.chek == 1)
         {
             Play();
-            GameController.chek = 0;
+            LightMovement.chek = 0;
         }
     }
 
@@ -39,7 +39,7 @@ public class PlayBar : MonoBehaviour
         {
             playVal = PlayerPrefs.GetInt("lightScore");
             Debug.Log("Play: " + playVal);
-            updateValue = GetPlayBarValue() + (0.04f * LightMovement.score)/4;
+            updateValue = GetPlayBarValue() + (0.025f * LightMovement.score)/4;
             PlayerPrefs.SetFloat("playBarBal", updateValue);
             SetPlayBarValue(updateValue);
         }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 public class Texts : MonoBehaviour
@@ -40,6 +41,7 @@ public class Texts : MonoBehaviour
     void Start()
     {
         _characterManager = FindObjectOfType<CharacterManager>();
+        PlayerPrefs.SetInt("Chapter", SceneManager.GetActiveScene().buildIndex);
         StartText();
     }
 
@@ -104,5 +106,8 @@ public class Texts : MonoBehaviour
     {
         TextOn = false;
         _textPanel.SetActive(false);
+        SceneManager.LoadScene(1);
+        
+
     }
 }

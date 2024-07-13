@@ -4,37 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
+
 {
-    private static List<AudioSource> audioSources = new List<AudioSource>();
-    private float musicVolume = 1f; // Громкость 
+    public Slider volumeSlider;
+    public AudioSource backgroundMusic;
 
-    // Start is called before the first frame update 
-    void Start()
+    private void Start()
     {
-        FindAllAudioSources(); // Находим все AudioSource в проекте
-    }
-
-    // Update is called once per frame 
-    void Update()
-    {
-        foreach (AudioSource audioSrc in audioSources)
+        if (backgroundMusic == null)
         {
-            audioSrc.volume = musicVolume; // Устанавливаем громкость для всех AudioSource 
+            Debug.LogError("AudioSource is not assigned in the inspector!");
         }
+        volumeSlider.onValueChanged.AddListener(SetVolume);
     }
 
-    public void ChangeVolume(float vol) // Изменение звука 
+    public void SetVolume(float volume)
     {
-        musicVolume = vol;
-    }
-
-    private void FindAllAudioSources()
-    {
-        AudioSource[] allAudioSources = FindObjectsOfType<AudioSource>(); // Находим все AudioSource в проекте
-
-        foreach (AudioSource audioSrc in allAudioSources)
-        {
-            audioSources.Add(audioSrc); // Добавляем каждый AudioSource в список
-        }
+        backgroundMusic.volume = volume;
     }
 }

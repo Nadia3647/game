@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public GameObject colaPrefab;
     public GameObject fricePrefab;
     public static int chek;
+    public static int played;
     public float timeLeft;
     public Text timerText;
     public Canvas canvas;
@@ -102,6 +103,7 @@ public class GameController : MonoBehaviour
     {
         SceneManager.LoadScene(1);
         chek = 1;
+        played = 1;
     }
 
     void TogglePause()

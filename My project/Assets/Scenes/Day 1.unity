@@ -1341,11 +1341,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterPrefab: {fileID: 1128025564269685735, guid: b9eb6fa0206489c4d9e7e62380b5a4a1, type: 3}
-  _main: {fileID: 1916522923}
-  _grandpa: {fileID: 1916522922}
-  _grandma: {fileID: 1916522921}
-  _raven: {fileID: 1916522926}
-  _dragon: {fileID: 1916522925}
+  _Main: {fileID: 1916522923}
+  _Grandpa: {fileID: 1916522922}
+  _Grandma: {fileID: 1916522921}
+  _Raven: {fileID: 1916522926}
+  _Dragon: {fileID: 1916522925}
+  _Aisha: {fileID: 0}
+  _Archi: {fileID: 0}
+  _Emmet: {fileID: 0}
 --- !u!114 &1916522925
 MonoBehaviour:
   m_ObjectHideFlags: 0

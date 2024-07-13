@@ -36,7 +36,8 @@ public class DragonController : MonoBehaviour
         if (other.CompareTag("Bird"))
         {
            SceneManager.LoadScene(1);
-            Birds.chek = 1;
+           Birds.played = 1;
+           Birds.chek = 1;
 
         
         }

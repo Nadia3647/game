@@ -27,9 +27,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Racing.unity
     guid: fd609b6a6bcfba84896946f6f03e8aa4
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 8fcc43dc83e9d4b4981af89a8577821d
+  - enabled: 1
     path: Assets/Scenes/Day 1.unity
     guid: dfe939ae60589f44f99d01520ad77c86
   - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
-    guid: 8fcc43dc83e9d4b4981af89a8577821d
+    path: Assets/Scenes/Day 2.unity
+    guid: cd403597a60839f408006ff1d3c449c3
   m_configObjects: {}

@@ -1,7 +1,7 @@
 VAR trust = 0
 VAR speakerName = ""
-VAR mainName = "МаНя"
-VAR dragonName = ""
+VAR mainName = "Мейра"
+VAR dragonName = "Соларион"
 VAR meatTaken = false
 VAR long = 0
 

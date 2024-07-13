@@ -14,6 +14,7 @@ public class Birds : MonoBehaviour
     public static int chek;
     private float beefWidth;
     private RectTransform canvasRect;
+    public static int played;
     private static float spawnXBirdBefore = -1;
     private static float spawnX;
     private static float spawnXCoinBefore = -1;
@@ -131,6 +132,7 @@ public class Birds : MonoBehaviour
     void EndOfGame()
     {
         SceneManager.LoadScene(1);
+        played = 1;
 
     }
 }

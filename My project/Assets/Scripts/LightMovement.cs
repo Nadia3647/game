@@ -12,6 +12,7 @@ public class LightMovement : MonoBehaviour
     private float timeLeft = 60;
     public Text timerText;
     public static int chek;
+    public static int played;
     public static int score;
     private int lightCount = 0;
     private bool isPaused = false;
@@ -21,6 +22,7 @@ public class LightMovement : MonoBehaviour
         canvasRect = canvas.GetComponent<RectTransform>();
         StartCoroutine(Spawn());
         score = 0;
+        UpdateText();
     }
 
     void Update()
@@ -45,7 +47,9 @@ public class LightMovement : MonoBehaviour
                 timeLeft = 0;
                 SceneManager.LoadScene(1);
                 chek = 1;
-            }
+                played = 1;
+}
+            UpdateText();
         }
     }
 
