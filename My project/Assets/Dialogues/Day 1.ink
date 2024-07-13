@@ -1,6 +1,6 @@
 -> Intro
 
-VAR meatTaken = ()
+VAR meatTaken = false
 VAR trust = 0
 VAR speakerName = ""
 VAR mainName = ""

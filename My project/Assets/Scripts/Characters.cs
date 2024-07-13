@@ -76,12 +76,12 @@ public class Characters : MonoBehaviour
                 break;
 
             case CharacterPosition._1_5:
-                _onScreenX = Screen.width * 1/5f;
+                _onScreenX = Screen.width * 1/6f;
                 _offScreenX = -Screen.width * 1/5f;
                 break;
 
             case CharacterPosition._4_5:
-                _onScreenX = Screen.width * 4/5f;
+                _onScreenX = Screen.width * 5/6f;
                 _offScreenX = Screen.width * 6/5f;
                 break;
         }

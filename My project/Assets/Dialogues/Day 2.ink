@@ -187,7 +187,7 @@ EXTERNAL Hide(characterName)
     ~ speakerName = "Консультант"
     С вами всё хорошо?
     ~ speakerName = mainName
-    Ах, да. Всё в порядке. Вы что-то сказали?
+    Да. Всё в порядке. Вы что-то сказали?
     ~ speakerName = "Консультант"
     Я спрашиваю, вам помочь?
     ~ speakerName = mainName
