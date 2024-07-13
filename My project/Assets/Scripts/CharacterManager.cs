@@ -15,15 +15,21 @@ public class CharacterManager : MonoBehaviour
     private GameObject _characterPrefab;
 
     [SerializeField]
-    private CharacterMoods _main;
+    private CharacterMoods _Main;
     [SerializeField]
-    private CharacterMoods _grandpa;
+    private CharacterMoods _Grandpa;
     [SerializeField]
-    private CharacterMoods _grandma;
+    private CharacterMoods _Grandma;
     [SerializeField]
-    private CharacterMoods _raven;
+    private CharacterMoods _Raven;
     [SerializeField]
-    private CharacterMoods _dragon;
+    private CharacterMoods _Dragon;
+    [SerializeField]
+    private CharacterMoods _Aisha;
+    [SerializeField]
+    private CharacterMoods _Archi;
+    [SerializeField]
+    private CharacterMoods _Emmet;
 
     private void Start()
     {
@@ -135,15 +141,21 @@ public class CharacterManager : MonoBehaviour
         switch (name)
         {
             case CharacterName.main:
-                return _main;
+                return _Main;
             case CharacterName.grandpa:
-                return _grandpa;
+                return _Grandpa;
             case CharacterName.grandma:
-                return _grandma;
+                return _Grandma;
             case CharacterName.raven:
-                return _raven;
+                return _Raven;
             case CharacterName.dragon:
-                return _dragon;
+                return _Dragon;
+            case CharacterName.Aisha:
+                return _Aisha;
+            case CharacterName.Archi:
+                return _Archi;
+            case CharacterName.Emmet:
+                return _Emmet;
             default:
                 Debug.LogError($"Could not find moodset for {name}");
                 return null;
